@@ -30,6 +30,10 @@
             {{message}}
         </div>
         <div>
+            <p>Enter Your Age : </p>
+            <input v-model="age"/>
+        </div>
+        <div>
             Can You Drive ?
             <span :class="{can: canDrive === 'Yes', cant: canDrive === 'No'}">
                 {{canDrive}}
@@ -49,12 +53,12 @@
 
           setTimeout(()=>{
               message.value = "Hello Again"
-              age.value = 30
           }, 5000)
 
           return {
               message,
-              canDrive
+              canDrive,
+              age
           }
       },
     };
