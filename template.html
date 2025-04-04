@@ -13,24 +13,46 @@
             font-size: 2em;
         }
     </style>
-    <!-- <script src="https://unpkg.com/vue@3.4.0"></script> -->
+     <script src="https://unpkg.com/vue@3.4.0"></script>
 </head>
 
 <body>
 <div id="app">
     <div>
-        {{message}}
+        <div>
+            {{message}}
+        </div>
+        <div>
+            Can You Drive ? {{canDrive}}
+        </div>
     </div>
 </div>
 <script>
-    // const { createApp, ref } = Vue;
-    // const App = {
-    //   setup() {
+    const { createApp, ref, computed } = Vue;
+    const App = {
+      setup() {
 
-    //   },
-    // };
+          let message = ref("Hello World")
 
-    // createApp(App).mount('#app');
+          let age = ref(null)
+
+          let canDrive = computed(()=>{
+              return age.value > 24 ? "Yes" : "No"
+          })
+
+          setTimeout(()=>{
+              message.value = "Hello Again"
+              age.value = 30
+          }, 5000)
+
+          return {
+              message,
+              canDrive
+          }
+      },
+    };
+
+    createApp(App).mount('#app');
 </script>
 </body>
 
